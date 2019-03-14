@@ -30,9 +30,9 @@ def tokenize(code):
                 cur = code[pl]
             ret.append(['str', tok])
             pl += 1
-        elif cur in string.ascii_letters:
+        elif cur in string.ascii_letters or cur == '_':
             tok = ''
-            while cur in string.ascii_letters or cur in "123456789" and pl < maxpl:
+            while cur in string.ascii_letters or cur in "123456789_" and pl < maxpl:
                 tok += cur
                 pl += 1
                 if pl >= maxpl:

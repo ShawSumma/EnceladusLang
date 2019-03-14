@@ -59,6 +59,20 @@ def conv(ast):
                 ret += conv(rhs)
                 ret.append(['store', lhs[1]])
             return ret
+        elif optype == '=>':
+            ret = []
+            argl = ast[1]
+            body = ast[2]
+            body = conv(body)
+            if argl[0] == 'name':
+                argl = [argl[1]]
+            else:
+                argl = [i[1] for i in argl[1]]
+            ret.append(['push', argl])
+            ret.append(['fn-jump', len(body)+1])
+            ret += body
+            ret.append(['ret'])
+            return ret
         elif optype == ':':
             ret = []
             for side in ast[1:]:

@@ -121,8 +121,8 @@ def parse_tokens(tokens):
         ['!=', '=='],
         ['&&', '||'],
         [':', '?'],
+        ['=>'],
         ['+=', '-=', '*=', '/=', '%=', '='],
-        ['=>']
     ]
     spl = tokens
     for lvl in oper_order:
